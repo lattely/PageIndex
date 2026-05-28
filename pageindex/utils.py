@@ -575,20 +575,38 @@ def add_node_text_with_labels(node, pdf_pages):
     return
 
 
-async def generate_node_summary(node, model=None):
-    prompt = f"""You are given a part of a document, your task is to generate a description of the partial document about what are main points covered in the partial document.
+def summary_language_instruction(summary_language: str = "auto") -> str:
+    """Return prompt text controlling summary output language."""
+    lang = (summary_language or "auto").lower()
+    if lang == "zh":
+        return "Write the description in Chinese (简体中文)."
+    if lang == "en":
+        return "Write the description in English."
+    return (
+        "Write the description in the same language as the Partial Document Text "
+        "(e.g. Chinese if the text is primarily Chinese, English if primarily English)."
+    )
 
-    Partial Document Text: {node['text']}
-    
-    Directly return the description, do not include any other text.
-    """
+
+async def generate_node_summary(node, model=None, summary_language: str = "auto"):
+    lang_instruction = summary_language_instruction(summary_language)
+    prompt = f"""You are given a part of a document. Generate a concise description of the main points covered in this partial document.
+
+Partial Document Text: {node['text']}
+
+{lang_instruction}
+Directly return the description only; do not include any other text.
+"""
     response = await llm_acompletion(model, prompt)
     return response
 
 
-async def generate_summaries_for_structure(structure, model=None):
+async def generate_summaries_for_structure(structure, model=None, summary_language: str = "auto"):
     nodes = structure_to_list(structure)
-    tasks = [generate_node_summary(node, model=model) for node in nodes]
+    tasks = [
+        generate_node_summary(node, model=model, summary_language=summary_language)
+        for node in nodes
+    ]
     summaries = await asyncio.gather(*tasks)
     
     for node, summary in zip(nodes, summaries):
@@ -619,14 +637,16 @@ def create_clean_structure_for_description(structure):
         return structure
 
 
-def generate_doc_description(structure, model=None):
-    prompt = f"""Your are an expert in generating descriptions for a document.
-    You are given a structure of a document. Your task is to generate a one-sentence description for the document, which makes it easy to distinguish the document from other documents.
-        
-    Document Structure: {structure}
-    
-    Directly return the description, do not include any other text.
-    """
+def generate_doc_description(structure, model=None, summary_language: str = "auto"):
+    lang_instruction = summary_language_instruction(summary_language)
+    prompt = f"""You are an expert in generating descriptions for a document.
+You are given a structure of a document. Generate a one-sentence description that makes it easy to distinguish this document from others.
+
+Document Structure: {structure}
+
+{lang_instruction}
+Directly return the description only; do not include any other text.
+"""
     response = llm_completion(model, prompt)
     return response
 

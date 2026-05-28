@@ -1,0 +1,36 @@
+{
+  "figures_info": [
+    {
+      "id": "图 1",
+      "title": "图 1 基于高血压靶器官评估的长程的、循环管理路径",
+      "main_figure_no": 1,
+      "sub_figure_no": null,
+      "sub_figure_title": "",
+      "location": "第143行",
+      "line_no": 143,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/高血压患者靶器官动态评估与长程管理专家共识/assets/figures/figure_1_基于高血压靶器官评估的长程的_循环管理路径.png",
+      "main_figure_detected_count": 1,
+      "figure_total_detected": 1,
+      "figure_success_downloaded": 1,
+      "assign_reason": "",
+      "needs_llm": false,
+      "medical_meaning": "该图展示了基于高血压靶器官评估的长程、循环管理路径，用于指导高血压患者的长期随访和治疗决策，强调在控制血压的同时动态评估靶器官损害，并根据评估结果调整治疗方案，形成闭环管理。",
+      "keywords": [
+        "高血压",
+        "靶器官评估",
+        "长程管理",
+        "循环管理路径",
+        "血压控制"
+      ],
+      "possible_entities": [
+        "高血压",
+        "靶器官损害",
+        "心血管风险",
+        "降压治疗",
+        "随访管理"
+      ]
+    }
+  ]
+}

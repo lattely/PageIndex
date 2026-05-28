@@ -1,0 +1,71 @@
+{
+  "figures_info": [
+    {
+      "id": "图 1-1",
+      "title": "图 1 图1",
+      "main_figure_no": 1,
+      "sub_figure_no": 1,
+      "sub_figure_title": "",
+      "location": "第5行",
+      "line_no": 5,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/高血压、糖尿病、血脂异常人群运动处方临床路径/assets/figures/figure_1_图1_1.png",
+      "main_figure_detected_count": 2,
+      "figure_total_detected": 2,
+      "figure_success_downloaded": 2,
+      "assign_reason": "",
+      "needs_llm": false,
+      "medical_meaning": "该图片为《高血压、糖尿病、血脂异常人群运动处方临床路径》指南的标题页或首页，展示了文章标题、作者及机构信息，用于标识该临床路径指南的发布主体和内容主题。",
+      "keywords": [
+        "高血压",
+        "糖尿病",
+        "血脂异常",
+        "运动处方",
+        "临床路径",
+        "指南"
+      ],
+      "possible_entities": [
+        "高血压",
+        "糖尿病",
+        "血脂异常",
+        "运动处方",
+        "临床路径"
+      ]
+    },
+    {
+      "id": "图 1-2",
+      "title": "图 1 三高人群运动处方临床路径流程图",
+      "main_figure_no": 1,
+      "sub_figure_no": 2,
+      "sub_figure_title": "",
+      "location": "第74行",
+      "line_no": 74,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/高血压、糖尿病、血脂异常人群运动处方临床路径/assets/figures/figure_1_三高人群运动处方临床路径流程图_2.png",
+      "main_figure_detected_count": 2,
+      "figure_total_detected": 2,
+      "figure_success_downloaded": 2,
+      "assign_reason": "",
+      "needs_llm": false,
+      "medical_meaning": "该图片为三高人群（高血压、糖尿病、血脂异常）运动处方临床路径的流程图，用于指导临床医生根据患者病情和风险评估，系统化地开具个体化运动处方，涵盖筛查、评估、处方制定与实施等环节。",
+      "keywords": [
+        "三高人群",
+        "运动处方",
+        "临床路径",
+        "流程图",
+        "高血压",
+        "糖尿病",
+        "血脂异常"
+      ],
+      "possible_entities": [
+        "高血压",
+        "糖尿病",
+        "血脂异常",
+        "运动处方",
+        "临床路径"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "figures_info": [
+    {
+      "id": "图 1",
+      "title": "图 1 诊断流程图",
+      "main_figure_no": 1,
+      "sub_figure_no": null,
+      "sub_figure_title": "",
+      "location": "第103行",
+      "line_no": 103,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/餐后低血压管理的中国专家共识/assets/figures/figure_1_诊断流程图.png",
+      "main_figure_detected_count": 1,
+      "figure_total_detected": 1,
+      "figure_success_downloaded": 1,
+      "assign_reason": "",
+      "needs_llm": false,
+      "medical_meaning": "该图展示了餐后低血压的诊断流程，用于指导临床医生根据餐后血压监测结果进行诊断和分型，以制定相应的治疗策略。",
+      "keywords": [
+        "餐后低血压",
+        "诊断流程图",
+        "血压监测",
+        "临床诊断"
+      ],
+      "possible_entities": [
+        "餐后低血压",
+        "诊断流程"
+      ]
+    }
+  ]
+}

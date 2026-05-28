@@ -1074,7 +1074,7 @@ def page_index_main(doc, opt=None):
         raise ValueError("Unsupported input type. Expected a PDF file path or BytesIO object.")
 
     print('Parsing PDF...')
-    page_list = get_page_tokens(doc, model=opt.model)
+    page_list = get_page_tokens(doc, model=opt.model, pdf_parser="PyMuPDF")
 
     logger.info({'total_page_number': len(page_list)})
     logger.info({'total_token': sum([page[1] for page in page_list])})
@@ -1082,36 +1082,57 @@ def page_index_main(doc, opt=None):
     async def page_index_builder():
         structure = await tree_parser(page_list, opt, doc=doc, logger=logger)
         if opt.if_add_node_id == 'yes':
-            write_node_id(structure)    
+            write_node_id(structure)
         if opt.if_add_node_text == 'yes':
             add_node_text(structure, page_list)
+        summary_language = getattr(opt, "summary_language", "auto")
         if opt.if_add_node_summary == 'yes':
             if opt.if_add_node_text == 'no':
                 add_node_text(structure, page_list)
-            await generate_summaries_for_structure(structure, model=opt.model)
+            await generate_summaries_for_structure(
+                structure, model=opt.model, summary_language=summary_language
+            )
             if opt.if_add_node_text == 'no':
                 remove_structure_text(structure)
-            if opt.if_add_doc_description == 'yes':
-                # Create a clean structure without unnecessary fields for description generation
-                clean_structure = create_clean_structure_for_description(structure)
-                doc_description = generate_doc_description(clean_structure, model=opt.model)
-                structure = format_structure(structure, order=['title', 'node_id', 'start_index', 'end_index', 'summary', 'text', 'nodes'])
-                return {
-                    'doc_name': get_pdf_name(doc),
-                    'doc_description': doc_description,
-                    'structure': structure,
-                }
-        structure = format_structure(structure, order=['title', 'node_id', 'start_index', 'end_index', 'summary', 'text', 'nodes'])
-        return {
+        doc_description = None
+        if opt.if_add_doc_description == 'yes':
+            clean_structure = create_clean_structure_for_description(structure)
+            doc_description = generate_doc_description(
+                clean_structure, model=opt.model, summary_language=summary_language
+            )
+        node_order = ['title', 'node_id', 'start_index', 'end_index', 'summary', 'text', 'nodes']
+        structure = format_structure(structure, order=node_order)
+        result = {
             'doc_name': get_pdf_name(doc),
             'structure': structure,
         }
+        if doc_description:
+            result['doc_description'] = doc_description
+        if getattr(opt, 'if_add_medical_metadata', 'no') == 'yes':
+            from .medical_metadata import enrich_with_medical_metadata
+            if opt.if_add_node_text == 'no':
+                add_node_text(structure, page_list)
+            source_path = doc if isinstance(doc, str) else None
+            project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            result = await enrich_with_medical_metadata(
+                result,
+                page_list=page_list,
+                source_path=source_path,
+                project_root=project_root,
+                model=opt.model,
+                summary_language=summary_language,
+                metadata_max_pages=getattr(opt, 'medical_metadata_max_pages', 3),
+            )
+            if opt.if_add_node_text == 'no':
+                remove_structure_text(structure)
+        return result
 
     return asyncio.run(page_index_builder())
 
 
 def page_index(doc, model=None, toc_check_page_num=None, max_page_num_each_node=None, max_token_num_each_node=None,
-               if_add_node_id=None, if_add_node_summary=None, if_add_doc_description=None, if_add_node_text=None):
+               if_add_node_id=None, if_add_node_summary=None, if_add_doc_description=None, if_add_node_text=None,
+               if_add_medical_metadata=None):
     
     user_opt = {
         arg: value for arg, value in locals().items()

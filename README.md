@@ -1,211 +1,204 @@
-<div align="center">
+# 基于PageIndex的医学文献结构化与元数据抽取
+
+<p align="center"><b>面向医学共识 / 指南&nbsp; ◦ &nbsp;文档结构树 + 医学元数据&nbsp; ◦ &nbsp;服务下游 RAG 与知识库构建</b></p>
   
-<a href="https://vectify.ai/pageindex" target="_blank">
-  <img src="https://github.com/user-attachments/assets/46201e72-675b-43bc-bfbd-081cc6b65a1d" alt="PageIndex Banner" />
-</a>
 
-<br/>
-<br/>
+## 📑 本项目做什么？
 
-<p align="center">
-  <a href="https://trendshift.io/repositories/14736" target="_blank"><img src="https://trendshift.io/api/badge/repositories/14736" alt="VectifyAI%2FPageIndex | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
-</p>
+在官方 PageIndex 的基础上，本项目针对 **中文医学文献（专家共识、诊疗指南等）** 做了定制化扩展，用于：
 
-# PageIndex: Vectorless, Reasoning-based RAG
+- 从 PDF / Markdown 中构建 **章节树结构（PageIndex tree）**；
+- 在此基础上，自动抽取 **医学文献元数据和关键信息**，生成结构化 JSON，方便后续：
+  - 构建医学知识图谱 / 元数据库；
+  - 为 RAG、检索问答、标注系统提供高质量结构化输入；
+  - 做批量统计（如疾病分布、推荐等级、数值阈值等）。
 
-<p align="center"><b>Reasoning-based RAG&nbsp; ◦ &nbsp;No Vector DB or Chunking&nbsp; ◦ &nbsp;Context-Aware&nbsp; ◦ &nbsp;Human-like Retrieval</b></p>
+核心输出为每篇文献一个独立目录：
 
-<h4 align="center">
-  <a href="https://vectify.ai">🌐 Homepage</a>&nbsp; • &nbsp;
-  <a href="https://chat.pageindex.ai">🖥️ Chat Platform</a>&nbsp; • &nbsp;
-  <a href="https://pageindex.ai/developer">🔌 MCP & API</a>&nbsp; • &nbsp;
-  <a href="https://docs.pageindex.ai">📖 Docs</a>&nbsp; • &nbsp;
-  <a href="https://discord.com/invite/VuXuf29EUj">💬 Discord</a>&nbsp; • &nbsp;
-  <a href="https://ii2abc2jejf.typeform.com/to/tK3AXl8T">✉️ Contact</a>&nbsp;
-</h4>
-  
-</div>
-
-
-<details open>
-<summary><h2>📢 Updates</h2></summary>
-
-- 🔥 [**Agentic Vectorless RAG**](https://github.com/VectifyAI/PageIndex/blob/main/examples/agentic_vectorless_rag_demo.py) — A simple *agentic, vectorless RAG* [example](#agentic-vectorless-rag-an-example) with self-hosted PageIndex, using OpenAI Agents SDK.
-- [**Scale PageIndex to Millions of Documents**](https://pageindex.ai/blog/pageindex-filesystem) — *PageIndex File System* is a file-level tree layer that lets PageIndex reason over an entire corpus, not just a single document, enabling massive-scale document search.
-- [PageIndex Chat](https://chat.pageindex.ai) — Human-like document analysis agent [platform](https://chat.pageindex.ai) for professional long documents. Also available via [MCP](https://pageindex.ai/developer) or [API](https://pageindex.ai/developer).
-- [PageIndex Framework](https://pageindex.ai/blog/pageindex-intro) — Deep dive into PageIndex: an *agentic, in-context tree index* that enables LLMs to perform *reasoning-based, context-aware retrieval* over long documents.
-
- <!-- **🧪 Cookbooks:**
-- [Vectorless RAG](https://docs.pageindex.ai/cookbook/vectorless-rag-pageindex): A minimal, hands-on example of reasoning-based RAG using PageIndex. No vectors, no chunking, and human-like retrieval.
-- [Vision-based Vectorless RAG](https://docs.pageindex.ai/cookbook/vision-rag-pageindex): OCR-free, vision-only RAG with PageIndex's reasoning-native retrieval workflow that works directly over PDF page images. -->
-
-</details>
+- `results/<文档名>/structure.json`
+- `results/<文档名>/assets/figures.json`（图元数据）
+- `results/<文档名>/assets/tables.json`（表元数据）
+- `results/<文档名>/assets/figures/*`（图片）
+- `results/<文档名>/assets/tables/*`（表格 `csv/md/png`）
 
 ---
 
-# 📑 Introduction to PageIndex
+## 🎯 生成的 JSON 结构（当前版本）
 
-Are you frustrated with vector database retrieval accuracy for long professional documents? Traditional vector-based RAG relies on semantic *similarity* rather than true *relevance*. But **similarity ≠ relevance** — what we truly need in retrieval is **relevance**, and that requires **reasoning**. When working with professional documents that demand domain expertise and multi-step reasoning, similarity search often falls short.
-
-Inspired by AlphaGo, we propose **[PageIndex](https://vectify.ai/pageindex)** — a **vectorless**, **reasoning-based RAG** system that builds a **hierarchical tree index** from long documents and uses LLMs to **reason** *over that index* for **agentic, context-aware retrieval**.
-It simulates how *human experts* navigate and extract knowledge from complex documents through *tree search*, enabling LLMs to *think* and *reason* their way to the most relevant document sections. PageIndex performs retrieval in two steps:
-
-1. Generate a “Table-of-Contents” **tree structure index** of documents
-2. Perform reasoning-based retrieval through **tree search**
-
-<div align="center">
-  <a href="https://pageindex.ai/blog/pageindex-intro" target="_blank" title="The PageIndex Framework">
-    <img src="https://docs.pageindex.ai/images/cookbook/vectorless-rag.png" width="70%">
-  </a>
-</div>
-
-### 🎯 Core Features
-
-Compared to traditional vector-based RAG, **PageIndex** features:
-- **No Vector DB**: Uses document structure and LLM reasoning for retrieval, instead of vector similarity search.
-- **No Chunking**: Documents are organized into natural sections, not artificial chunks.
-- **Better Explainability and Traceability**: Retrieval is based on reasoning, traceable and interpretable, with page and section references. No more opaque, approximate vector search (“vibe retrieval”).
-- **Context-Aware Retrieval**: Retrieval depends on your full context (e.g., conversation history and domain knowledge), and easily incorporates new context.
-- **Human-like Retrieval**: Simulates how human experts navigate and extract knowledge from complex documents.
-
-PageIndex powers a reasoning-based RAG system that achieved **state-of-the-art** [98.7% accuracy](https://github.com/VectifyAI/Mafin2.5-FinanceBench) on FinanceBench, demonstrating superior performance over vector-based RAG solutions in professional document analysis. See our [blog post](https://vectify.ai/blog/Mafin2.5) for details.
-
-### 📍 Explore PageIndex
-
-To learn more, please see a detailed introduction to the [PageIndex framework](https://pageindex.ai/blog/pageindex-intro). Check out this GitHub repo for open-source code, and the [cookbooks](https://docs.pageindex.ai/cookbook), [tutorials](https://docs.pageindex.ai/tutorials), and [blog](https://pageindex.ai/blog) for additional usage guides and examples.
-
-The PageIndex service is available as a ChatGPT-style [chat platform](https://chat.pageindex.ai), or can be integrated via [MCP](https://pageindex.ai/developer) or [API](https://pageindex.ai/developer).
-
-### 🛠️ Deployment Options
-- Self-host — run locally with this open-source repo (using standard PDF parsing).
-- Cloud Service — production-grade pipeline with enhanced OCR, tree building, and retrieval for best results. Try instantly with our [Chat Platform](https://chat.pageindex.ai/), or integrate via [MCP](https://pageindex.ai/developer) or [API](https://pageindex.ai/developer).
-- _Enterprise_ — private or on-prem deployment. [Contact us](https://ii2abc2jejf.typeform.com/to/tK3AXl8T) or [book a demo](https://calendly.com/pageindex/meet) for more details.
-
-### 🧪 Quick Hands-on
-
-- 🔥 [**Agentic Vectorless RAG**](examples/agentic_vectorless_rag_demo.py) (**latest**) — a simple but complete **agentic vectorless RAG** [example](#agentic-vectorless-rag-an-example) with *self-hosted* PageIndex, using OpenAI Agents SDK.
-- Try the [Vectorless RAG](https://github.com/VectifyAI/PageIndex/blob/main/cookbook/pageindex_RAG_simple.ipynb) notebook — a *minimal*, hands-on example of reasoning-based RAG using PageIndex.
-- Check out [Vision-based Vectorless RAG](https://github.com/VectifyAI/PageIndex/blob/main/cookbook/vision_RAG_pageindex.ipynb) — no OCR; a minimal, vision-based & reasoning-native RAG pipeline that works directly over page images.
-  
-<div align="center">
-  <a href="https://github.com/VectifyAI/PageIndex/blob/main/examples/agentic_vectorless_rag_demo.py" target="_blank" rel="noopener">
-    <img src="https://img.shields.io/badge/View_on_GitHub-Agentic_Vectorless_RAG-blue?style=for-the-badge&logo=github" alt="View on GitHub: Agentic Vectorless RAG" />
-  </a>
-  <br/>
-  <a href="https://colab.research.google.com/github/VectifyAI/PageIndex/blob/main/cookbook/pageindex_RAG_simple.ipynb" target="_blank" rel="noopener">
-    <img src="https://img.shields.io/badge/Open_In_Colab-Vectorless_RAG-orange?style=for-the-badge&logo=googlecolab" alt="Open in Colab: Vectorless RAG" />
-  </a>
-  &nbsp;&nbsp;
-  <a href="https://colab.research.google.com/github/VectifyAI/PageIndex/blob/main/cookbook/vision_RAG_pageindex.ipynb" target="_blank" rel="noopener">
-    <img src="https://img.shields.io/badge/Open_In_Colab-Vision_RAG-orange?style=for-the-badge&logo=googlecolab" alt="Open in Colab: Vision RAG" />
-  </a>
-</div>
-
----
-
-# 🌲 PageIndex Tree Structure
-
-PageIndex can transform lengthy PDF documents into a semantic **tree structure**, similar to a _“table of contents”_ but optimized for use with Large Language Models (LLMs). It's ideal for: financial reports, regulatory filings, academic textbooks, legal or technical manuals, and any document that exceeds LLM context limits.
-
-Below is an example PageIndex tree structure. Also see more example [documents](https://github.com/VectifyAI/PageIndex/tree/main/examples/documents) and generated [tree structures](https://github.com/VectifyAI/PageIndex/tree/main/examples/documents/results).
+每篇文献会在 `results/<文档名>/structure.json` 生成结构树与路径索引（简化示例）：
 
 ```jsonc
-...
 {
-  "title": "Financial Stability",
-  "node_id": "0006",
-  "start_index": 21,
-  "end_index": 22,
-  "summary": "The Federal Reserve ...",
-  "nodes": [
+  "doc_name": "中主动脉综合征致高血压诊断与治疗多学科专家共识(2026).pdf",
+  "abstract": "...摘要全文或开篇概括...",
+  "keywords": ["高血压", "中主动脉综合征", "..."],
+  "year": "2026",
+  "month": "4",
+  "author": "XXX, YYY, ...",
+  "article_type": "专家共识",        // 也可能是：诊疗指南、临床路径、综述等
+  "disease": ["高血压", "中主动脉综合征"],
+  "raw_pdf_path": "documents/pdf/中主动脉综合征致高血压诊断与治疗多学科专家共识(2026).pdf",
+  "raw_md_path": "documents/markdown/中主动脉综合征致高血压诊断与治疗多学科专家共识(2026).md",
+  "figures_info_path": "results/中主动脉综合征致高血压诊断与治疗多学科专家共识(2026)/assets/figures.json",
+  "tables_info_path": "results/中主动脉综合征致高血压诊断与治疗多学科专家共识(2026)/assets/tables.json",
+  "structure": [
     {
-      "title": "Monitoring Financial Vulnerabilities",
-      "node_id": "0007",
-      "start_index": 22,
-      "end_index": 28,
-      "summary": "The Federal Reserve's monitoring ..."
-    },
-    {
-      "title": "Domestic and International Cooperation and Coordination",
-      "node_id": "0008",
-      "start_index": 28,
-      "end_index": 31,
-      "summary": "In 2023, the Federal Reserve collaborated ..."
+      "title": "前言",
+      "node_id": "0000",
+      "start_index": 1,
+      "end_index": 2,
+      "summary": "该节主要介绍...",
+      "special_number": {
+        "高血压患病率": "约 27.9%",
+        "控制率": "约 16.8%"
+      },
+      "nodes": [ ... 子章节 ... ]
     }
   ]
 }
-...
 ```
 
-You can generate the PageIndex tree structure with this open-source repo; or use our [API](https://pageindex.ai/developer) for higher-quality results powered by our enhanced OCR and tree building pipeline.
+`figures.json`（简化）示例：
+
+```jsonc
+{
+  "figures_info": [
+    {
+      "id": "图 1-1",
+      "title": "图 1 中主动脉综合征解剖学分型 (1) 肾动脉上",
+      "main_figure_no": 1,
+      "sub_figure_no": 1,
+      "sub_figure_title": "肾动脉上",
+      "location": "第177行",
+      "line_no": 177,
+      "asset_status": "success",
+      "image_path": "results/.../assets/figures/figure_1_中主动脉综合征解剖学分型_1_肾动脉上.png",
+      "main_figure_detected_count": 3,
+      "medical_meaning": "...",
+      "keywords": ["..."],
+      "possible_entities": ["..."]
+    }
+  ]
+}
+```
+
+`tables.json`（简化）示例：
+
+```jsonc
+{
+  "tables_info": [
+    {
+      "id": "表1",
+      "title": "本共识推荐强度的分级",
+      "location": "第220行",
+      "asset_status": "success",
+      "csv_path": "results/.../assets/tables/table_1_本共识推荐强度的分级.csv",
+      "md_path": "results/.../assets/tables/table_1_本共识推荐强度的分级.md",
+      "medical_meaning": "...",
+      "keywords": ["..."],
+      "possible_entities": ["..."]
+    }
+  ]
+}
+```
+
+其中：
+
+- **文档级字段**（在 `doc_name` 和 `structure` 之间）由 LLM 结合文档内容抽取；
+- **轻量化原则**：默认不输出节点 `text`，仅输出 `summary`；
+- **`special_number`**：仅在节点出现明确数值/阈值/剂量等时出现；
+- **图表信息**单独存储到 `figures.json` / `tables.json`，`structure.json` 仅保留路径引用；
+- **图表提取**基于 MinerU 产出的 Markdown（含 `![]()`、`<img>`、`<table>`），表格会导出 `csv + md`。
+
+更完整的字段示例可参考仓库内的 `documents/template.json`。
 
 ---
 
-# ⚙️ Package Usage
+## ⚙️ 使用方法
 
-> **Note:** This package uses standard PDF parsing. For use cases with complex PDFs, our [cloud service](https://pageindex.ai/developer) (via MCP and API) offers enhanced OCR, tree building, and retrieval.
-
-You can follow these steps to generate a PageIndex tree from a PDF document.
-
-### 1. Install dependencies
+### 1. 安装依赖
 
 ```bash
 pip3 install --upgrade -r requirements.txt
 ```
 
-### 2. Set your LLM API key
+### 2. 配置环境变量
 
-Create a `.env` file in the root directory with your LLM API key. Multi-LLM is supported via [LiteLLM](https://docs.litellm.ai/docs/providers):
-
-```bash
-OPENAI_API_KEY=your_openai_key_here
-```
-
-### 3. Generate PageIndex structure for your PDF
+在项目根目录创建 `.env`，例如：
 
 ```bash
-python3 run_pageindex.py --pdf_path /path/to/your/document.pdf
+DEEPSEEK_API_KEY=your_deepseek_key_here
+MINERU_API_KEY=your_mineru_key_here
 ```
 
-<details>
-<summary>Optional parameters</summary>
-<br>
-You can customize the processing with additional optional arguments:
-
-```
---model                 LLM model to use (default: gpt-4o-2024-11-20)
---toc-check-pages       Pages to check for table of contents (default: 20)
---max-pages-per-node    Max pages per node (default: 10)
---max-tokens-per-node   Max tokens per node (default: 20000)
---if-add-node-id        Add node ID (yes/no, default: yes)
---if-add-node-summary   Add node summary (yes/no, default: yes)
---if-add-doc-description Add doc description (yes/no, default: yes)
-```
-</details>
-
-<details>
-<summary>Markdown support</summary>
-<br>
-We also provide markdown support for PageIndex. You can use the `--md_path` flag to generate a tree structure for a markdown file.
+可选环境变量：
 
 ```bash
-python3 run_pageindex.py --md_path /path/to/your/document.md
+MINERU_API_BASE=https://mineru.net/api/v4
+MINERU_MODEL_VERSION=vlm
+USE_LLM_FIGURE_VALIDATOR=0   # 1/true/yes 开启图号歧义时的LLM校验
 ```
 
-> Note: in this mode, we use "#" to determine node headings and their levels. For example, "##" is level 2, "###" is level 3, etc. Make sure your markdown file is formatted correctly. If your Markdown file was converted from a PDF or HTML, we don't recommend using this mode, since most existing conversion tools cannot preserve the original hierarchy. Instead, use our [PageIndex OCR](https://pageindex.ai/blog/ocr), which is designed to preserve it, to convert the PDF to a markdown file and then use this mode.
-</details>
+默认 LLM 为 `deepseek/deepseek-chat`（见 `pageindex/config.yaml`）。图表提取以 MinerU Markdown 资产导出为主，不再走旧的 LLM 裁剪流程。
 
-## Agentic Vectorless RAG: An Example
-
-For a simple, end-to-end _**agentic vectorless RAG**_ example using self-hosted PageIndex (with OpenAI Agents SDK), see [`examples/agentic_vectorless_rag_demo.py`](examples/agentic_vectorless_rag_demo.py).
+### 3. 对单篇 PDF 生成结构化 JSON（含医学元数据）
 
 ```bash
-# Install optional dependency
-pip3 install openai-agents
-
-# Run the demo
-python3 examples/agentic_vectorless_rag_demo.py
+python3 run_pageindex.py --pdf_path "./documents/pdf/中主动脉综合征致高血压诊断与治疗多学科专家共识(2026).pdf"
 ```
+
+运行完成后目录示例：
+
+```text
+results/
+  中主动脉综合征致高血压诊断与治疗多学科专家共识(2026)/
+    structure.json
+    assets/
+      figures.json
+      tables.json
+      figures/
+        figure_1_中主动脉综合征解剖学分型_1_肾动脉上.png
+      tables/
+        table_1_本共识推荐强度的分级.csv
+        table_1_本共识推荐强度的分级.md
+```
+
+**可选参数（与医学抽取相关）：**
+
+```bash
+--model                    使用的 LLM 模型（默认见 pageindex/config.yaml）
+--toc-check-pages          检测目录的最大页数（默认 20）
+--max-pages-per-node       单节点最大页数（默认 10）
+--max-tokens-per-node      单节点最大 token 数（默认 20000）
+--if-add-node-id           是否给节点添加 node_id（yes/no，默认 yes）
+--if-add-node-summary      是否生成节点摘要（yes/no，默认 yes）
+--if-add-doc-description   是否生成整篇文档描述（yes/no，默认 no）
+--if-add-node-text         是否在节点中保留原文 text（yes/no，默认 no）
+--if-add-medical-metadata  是否启用医学元数据抽取（yes/no，默认 yes）
+```
+
+### 4. Markdown 文档支持
+
+如果你已经有结构良好的 Markdown（如某些期刊提供的 HTML/Markdown 版本），可以直接对 `.md` 跑同样的流程：
+
+```bash
+python3 run_pageindex.py --md_path "./documents/markdown/中主动脉综合征致高血压诊断与治疗多学科专家共识(2026).md"
+```
+
+- 标题层级通过 `# / ## / ###` 判定；
+- `structure` 中用 `line_num` 表示位置；
+- 如果是 `--md_path` 直接处理，仅输出结构树（不会自动跑 MinerU 资产导出）；
+- 当 `--pdf_path` 且 `documents/markdown/<文档名>.md` 已存在时，会优先复用现有 markdown，缺失资源时才补拉 MinerU zip。
+
+---
+
+## 🧩 图表命名与提取规则（当前实现）
+
+- 图文件：`figure_{主图号}_{主标题}_{子图号}_{子标题}.png`
+- 表文件：`table_{表号}_{中文标题}.csv/.md`
+- 多子图按 `图 N-1 / 图 N-2 ...` 组织；若标题中存在 `A/B/C/D` 或 `(1)/(2)` 会优先使用
+- Markdown 表格与 HTML `<table>...</table>` 都会解析并导出为结构化表格文件
+- 每条图/表记录会附带医学语义增强字段（如 `medical_meaning`、`keywords`、`possible_entities`）
 
 <!--
 # ☁️ Improved Tree Generation with PageIndex OCR
@@ -224,73 +217,12 @@ To address this, we introduced PageIndex OCR — the first long-context OCR mode
 
 ---
 
-# 📈 Case Study: PageIndex Leads Finance QA Benchmark
-
-[Mafin 2.5](https://vectify.ai/mafin) is a reasoning-based RAG system for financial document analysis, powered by **PageIndex**. It achieved a state-of-the-art [**98.7% accuracy**](https://vectify.ai/blog/Mafin2.5) on the [FinanceBench](https://arxiv.org/abs/2311.11944) benchmark, significantly outperforming traditional vector-based RAG systems.
-
-PageIndex's hierarchical indexing and reasoning-driven retrieval enable precise navigation and extraction of relevant context from complex financial reports, such as SEC filings and earnings disclosures.
-
-Explore the full [benchmark results](https://github.com/VectifyAI/Mafin2.5-FinanceBench) and our [blog post](https://vectify.ai/blog/Mafin2.5) for detailed comparisons and performance metrics.
-
-<div align="center">
-  <a href="https://github.com/VectifyAI/Mafin2.5-FinanceBench">
-    <img src="https://github.com/user-attachments/assets/571aa074-d803-43c7-80c4-a04254b782a3" width="70%">
-  </a>
-</div>
-
 ---
 
-# 🧭 Resources
+## 🧭 典型应用场景
 
-* 📝 [Blog](https://pageindex.ai/blog): technical articles, research insights, and product updates.
-* 🔧 [Developer](https://pageindex.ai/developer): MCP setup, API docs, and integration guides.
-* 🧪 [Cookbooks](https://docs.pageindex.ai/cookbook): hands-on, runnable examples and advanced use cases.
-* 📖 [Tutorials](https://docs.pageindex.ai/tutorials): practical guides and strategies, including *Document Search* and *Tree Search*.
+- 批量解析 **高血压、心血管、内分泌等领域的专家共识 / 指南**，统一输出结构化 JSON；
+- 为自建 **医学知识库 / RAG 系统** 提供“文献结构 + 元数据 + 数值阈值”输入；
+- 结合下游工具，将 `special_number` 与 EHR、指标库对齐，做自动质控或提醒。
 
----
-
-# ⭐ Support Us
-
-Leave us a star 🌟 if you like our project. Thank you!  
-
-<p>
-  <img src="https://github.com/user-attachments/assets/eae4ff38-48ae-4a7c-b19f-eab81201d794" width="80%">
-</p>
-
-Please cite this work as:
-```
-Mingtian Zhang, Yu Tang and PageIndex Team,
-"PageIndex: Next-Generation Vectorless, Reasoning-based RAG",
-PageIndex Blog, Sep 2025.
-```
-
-<details>
-<summary>Or use the BibTeX citation.</summary>
-
-```bibtex
-@article{zhang2025pageindex,
-  author = {Mingtian Zhang and Yu Tang and PageIndex Team},
-  title = {PageIndex: Next-Generation Vectorless, Reasoning-based RAG},
-  journal = {PageIndex Blog},
-  year = {2025},
-  month = {September},
-  note = {https://pageindex.ai/blog/pageindex-intro},
-}
-```
-</details>
-
-
-### Connect with Us
-
-<div align="center">
-
-[![Twitter](https://img.shields.io/badge/Twitter-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/PageIndexAI)&ensp;
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/vectify-ai/)&ensp;
-[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/invite/VuXuf29EUj)&ensp;
-[![Contact Us](https://img.shields.io/badge/Contact_Us-3B82F6?style=for-the-badge&logo=envelope&logoColor=white)](https://ii2abc2jejf.typeform.com/to/tK3AXl8T)
-
-</div>
-
----
-
-© 2026 [Vectify AI](https://vectify.ai)
+本仓库主要关注 **本地/自托管场景**，不依赖官方云端 API，可完全在内网环境中运行（前提是能访问所配置的 LLM 服务）。

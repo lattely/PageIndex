@@ -4,3 +4,9 @@ __pycache__
 .env*
 .venv/
 logs/
+examples/
+cookbook/
+.vscode/
+.github/
+.claude/
+results_archived/

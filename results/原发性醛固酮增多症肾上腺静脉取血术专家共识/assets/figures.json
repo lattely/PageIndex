@@ -1,0 +1,339 @@
+{
+  "figures_info": [
+    {
+      "id": "图 1",
+      "title": "图 1 双侧肾上腺静脉的正常走行",
+      "main_figure_no": 1,
+      "sub_figure_no": null,
+      "sub_figure_title": "",
+      "location": "第71行",
+      "line_no": 71,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/原发性醛固酮增多症肾上腺静脉取血术专家共识/assets/figures/figure_1_双侧肾上腺静脉的正常走行.png",
+      "main_figure_detected_count": 1,
+      "medical_meaning": "该图片展示了双侧肾上腺静脉的正常解剖走行，包括左侧肾上腺静脉汇入左肾静脉、右侧肾上腺静脉汇入下腔静脉的典型路径，以及膈下静脉（IPV）和肾上腺静脉（AV）的解剖关系，用于指导肾上腺静脉取血术（AVS）操作中的血管识别和插管定位。",
+      "keywords": [
+        "双侧肾上腺静脉",
+        "正常走行",
+        "肾上腺静脉解剖",
+        "左侧肾上腺静脉",
+        "右侧肾上腺静脉",
+        "膈下静脉",
+        "中央静脉",
+        "肾上腺静脉取血术"
+      ],
+      "possible_entities": [
+        "原发性醛固酮增多症",
+        "肾上腺静脉取血术",
+        "左肾静脉",
+        "下腔静脉",
+        "膈下静脉"
+      ],
+      "figure_total_detected": 11,
+      "figure_success_downloaded": 11
+    },
+    {
+      "id": "图 2",
+      "title": "图 2 左侧肾上腺静脉的变异",
+      "main_figure_no": 2,
+      "sub_figure_no": null,
+      "sub_figure_title": "",
+      "location": "第97行",
+      "line_no": 97,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/原发性醛固酮增多症肾上腺静脉取血术专家共识/assets/figures/figure_2_左侧肾上腺静脉的变异.png",
+      "main_figure_detected_count": 1,
+      "medical_meaning": "该图片展示了左侧肾上腺静脉的解剖变异类型，包括常见的肾上腺静脉（AV）、肾静脉（RV）和生殖静脉（GV）之间的变异关系，用于指导肾上腺静脉取血术（AVS）中准确识别和插管，避免误采或漏采。",
+      "keywords": [
+        "左侧肾上腺静脉",
+        "变异",
+        "肾上腺静脉取血术",
+        "解剖变异",
+        "肾静脉",
+        "生殖静脉"
+      ],
+      "possible_entities": [
+        "左侧肾上腺静脉",
+        "肾静脉",
+        "生殖静脉",
+        "肾上腺静脉取血术",
+        "原发性醛固酮增多症"
+      ],
+      "figure_total_detected": 11,
+      "figure_success_downloaded": 11
+    },
+    {
+      "id": "图 3",
+      "title": "图 3 右侧肾上腺静脉的变异",
+      "main_figure_no": 3,
+      "sub_figure_no": null,
+      "sub_figure_title": "",
+      "location": "第142行",
+      "line_no": 142,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/原发性醛固酮增多症肾上腺静脉取血术专家共识/assets/figures/figure_3_右侧肾上腺静脉的变异.png",
+      "main_figure_detected_count": 1,
+      "medical_meaning": "图3展示了右侧肾上腺静脉的变异类型，包括与膈下静脉、肾静脉、性腺静脉、下腔静脉和腰静脉的汇合模式，用于指导肾上腺静脉取血术（AVS）中识别右侧肾上腺静脉的解剖变异，提高插管成功率和诊断准确性。",
+      "keywords": [
+        "右侧肾上腺静脉",
+        "变异",
+        "肾上腺静脉取血术",
+        "解剖变异",
+        "静脉汇合"
+      ],
+      "possible_entities": [
+        "原发性醛固酮增多症",
+        "肾上腺静脉取血术",
+        "右侧肾上腺静脉",
+        "膈下静脉",
+        "肾静脉",
+        "性腺静脉",
+        "下腔静脉",
+        "腰静脉"
+      ],
+      "figure_total_detected": 11,
+      "figure_success_downloaded": 11
+    },
+    {
+      "id": "图 4-1",
+      "title": "图 4 RAV 分型示意 A. B. C. D (1) A",
+      "main_figure_no": 4,
+      "sub_figure_no": 1,
+      "sub_figure_title": "A",
+      "location": "第177行",
+      "line_no": 177,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/原发性醛固酮增多症肾上腺静脉取血术专家共识/assets/figures/figure_4_RAV_分型示意_A_B_C_D_1_A.png",
+      "main_figure_detected_count": 4,
+      "medical_meaning": "该图片展示了RAV（右侧肾上腺静脉）的分型示意图，用于指导肾上腺静脉取血术（AVS）中识别右侧肾上腺静脉的解剖变异，以提高插管成功率和诊断准确性。",
+      "keywords": [
+        "RAV分型",
+        "右侧肾上腺静脉",
+        "肾上腺静脉取血术",
+        "解剖变异",
+        "AVS"
+      ],
+      "possible_entities": [
+        "原发性醛固酮增多症",
+        "肾上腺静脉",
+        "AVS",
+        "RAV"
+      ],
+      "figure_total_detected": 11,
+      "figure_success_downloaded": 11
+    },
+    {
+      "id": "图 4-2",
+      "title": "图 4 RAV 分型示意 A. B. C. D (2) B",
+      "main_figure_no": 4,
+      "sub_figure_no": 2,
+      "sub_figure_title": "B",
+      "location": "第190行",
+      "line_no": 190,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/原发性醛固酮增多症肾上腺静脉取血术专家共识/assets/figures/figure_4_RAV_分型示意_A_B_C_D_2_B.png",
+      "main_figure_detected_count": 4,
+      "medical_meaning": "该图片展示了RAV（右侧肾上腺静脉）分型示意图中的B型，用于指导原发性醛固酮增多症患者进行肾上腺静脉取血术（AVS）时的血管解剖分型，帮助术者识别右侧肾上腺静脉的开口位置和走行，以提高插管成功率和诊断准确性。",
+      "keywords": [
+        "RAV分型",
+        "右侧肾上腺静脉",
+        "B型",
+        "肾上腺静脉取血术",
+        "原发性醛固酮增多症",
+        "血管解剖"
+      ],
+      "possible_entities": [
+        "原发性醛固酮增多症",
+        "肾上腺静脉取血术",
+        "右侧肾上腺静脉",
+        "RAV分型B型"
+      ],
+      "figure_total_detected": 11,
+      "figure_success_downloaded": 11
+    },
+    {
+      "id": "图 4-3",
+      "title": "图 4 RAV 分型示意 A. B. C. D (3) C",
+      "main_figure_no": 4,
+      "sub_figure_no": 3,
+      "sub_figure_title": "C",
+      "location": "第204行",
+      "line_no": 204,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/原发性醛固酮增多症肾上腺静脉取血术专家共识/assets/figures/figure_4_RAV_分型示意_A_B_C_D_3_C.png",
+      "main_figure_detected_count": 4,
+      "medical_meaning": "该图片展示了RAV（肾上腺静脉）分型中的C型示意图，用于指导原发性醛固酮增多症患者进行肾上腺静脉取血术（AVS）时的血管解剖分型，帮助术者识别和操作。",
+      "keywords": [
+        "RAV分型",
+        "C型",
+        "肾上腺静脉取血术",
+        "原发性醛固酮增多症",
+        "血管解剖"
+      ],
+      "possible_entities": [
+        "原发性醛固酮增多症",
+        "肾上腺静脉取血术",
+        "RAV分型"
+      ],
+      "figure_total_detected": 11,
+      "figure_success_downloaded": 11
+    },
+    {
+      "id": "图 4-4",
+      "title": "图 4 RAV 分型示意 A. B. C. D",
+      "main_figure_no": 4,
+      "sub_figure_no": 4,
+      "sub_figure_title": "",
+      "location": "第220行",
+      "line_no": 220,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/原发性醛固酮增多症肾上腺静脉取血术专家共识/assets/figures/figure_4_RAV_分型示意_A_B_C_D_4.png",
+      "main_figure_detected_count": 4,
+      "medical_meaning": "该图展示了RAV（肾上腺静脉）的四种分型示意图（A、B、C、D），用于指导原发性醛固酮增多症患者进行肾上腺静脉取血术（AVS）时对肾上腺静脉解剖变异的识别和分类，以提高取血成功率和诊断准确性。",
+      "keywords": [
+        "RAV分型",
+        "肾上腺静脉取血术",
+        "原发性醛固酮增多症",
+        "解剖变异",
+        "AVS"
+      ],
+      "possible_entities": [
+        "原发性醛固酮增多症",
+        "肾上腺静脉",
+        "RAV分型",
+        "肾上腺静脉取血术"
+      ],
+      "figure_total_detected": 11,
+      "figure_success_downloaded": 11
+    },
+    {
+      "id": "图 5",
+      "title": "图 5 RAV CT 影像分型 A. RAV- Ⅰ型：RAV 独立开口于 IVC 并向右后方走行，这种类型是最常见的；B. RAV- Ⅱ型：RAV 独立开口于但向左后或正后方走行 型 汇入副肝静脉并延续一段距离后汇入下腔静脉；D. RAV- Ⅲ型：",
+      "main_figure_no": 5,
+      "sub_figure_no": null,
+      "sub_figure_title": "",
+      "location": "第238行",
+      "line_no": 238,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/原发性醛固酮增多症肾上腺静脉取血术专家共识/assets/figures/figure_5_RAV_CT_影像分型_A_RAV-_型_RAV_独立开口于_IVC_并向右后方走行_这种类型是最常见的_B_RAV-_型_RAV_独立开口于但向左后或正后方走行_型_汇入副肝静脉并延续一段距离后汇入下腔静脉_D_RAV-_型.png",
+      "main_figure_detected_count": 1,
+      "medical_meaning": "该图片展示了右侧肾上腺静脉（RAV）在CT影像上的四种分型，包括RAV-Ⅰ型（最常见，独立开口于下腔静脉并向右后方走行）、RAV-Ⅱ型（独立开口于下腔静脉但向左后或正后方走行）、RAV-Ⅲ型（汇入副肝静脉后汇入下腔静脉）以及未完整描述的D型，用于指导肾上腺静脉取血术（AVS）的术前规划和操作。",
+      "keywords": [
+        "右侧肾上腺静脉",
+        "RAV分型",
+        "CT影像",
+        "下腔静脉",
+        "副肝静脉",
+        "肾上腺静脉取血术"
+      ],
+      "possible_entities": [
+        "RAV-Ⅰ型",
+        "RAV-Ⅱ型",
+        "RAV-Ⅲ型",
+        "IVC",
+        "副肝静脉"
+      ],
+      "figure_total_detected": 11,
+      "figure_success_downloaded": 11
+    },
+    {
+      "id": "图 6-1",
+      "title": "图 6 肾上腺静脉 MRA 重建 A. 左侧肾上腺静脉；B. 右侧肾上腺静脉；C. 双侧肾上腺静脉 (1) A",
+      "main_figure_no": 6,
+      "sub_figure_no": 1,
+      "sub_figure_title": "A",
+      "location": "第250行",
+      "line_no": 250,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/原发性醛固酮增多症肾上腺静脉取血术专家共识/assets/figures/figure_6_肾上腺静脉_MRA_重建_A_左侧肾上腺静脉_B_右侧肾上腺静脉_C_双侧肾上腺静脉_1_A.png",
+      "main_figure_detected_count": 3,
+      "medical_meaning": "该图片展示了通过磁共振血管成像（MRA）重建技术显示的双侧肾上腺静脉解剖结构，用于指导原发性醛固酮增多症患者进行肾上腺静脉取血术（AVS）前的血管定位与评估。",
+      "keywords": [
+        "肾上腺静脉",
+        "MRA重建",
+        "左侧肾上腺静脉",
+        "右侧肾上腺静脉",
+        "双侧肾上腺静脉",
+        "原发性醛固酮增多症",
+        "肾上腺静脉取血术"
+      ],
+      "possible_entities": [
+        "肾上腺静脉",
+        "MRA",
+        "左侧肾上腺静脉",
+        "右侧肾上腺静脉",
+        "原发性醛固酮增多症",
+        "肾上腺静脉取血术"
+      ],
+      "figure_total_detected": 11,
+      "figure_success_downloaded": 11
+    },
+    {
+      "id": "图 6-2",
+      "title": "图 6 肾上腺静脉 MRA 重建 A. 左侧肾上腺静脉；B. 右侧肾上腺静脉；C. 双侧肾上腺静脉 (2) B",
+      "main_figure_no": 6,
+      "sub_figure_no": 2,
+      "sub_figure_title": "B",
+      "location": "第259行",
+      "line_no": 259,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/原发性醛固酮增多症肾上腺静脉取血术专家共识/assets/figures/figure_6_肾上腺静脉_MRA_重建_A_左侧肾上腺静脉_B_右侧肾上腺静脉_C_双侧肾上腺静脉_2_B.png",
+      "main_figure_detected_count": 3,
+      "medical_meaning": "该图片展示了通过磁共振血管成像（MRA）重建技术显示的左侧肾上腺静脉解剖结构，用于指导原发性醛固酮增多症患者进行肾上腺静脉取血术（AVS）前的血管定位，以提高手术成功率并减少并发症。",
+      "keywords": [
+        "肾上腺静脉",
+        "MRA重建",
+        "左侧肾上腺静脉",
+        "原发性醛固酮增多症",
+        "肾上腺静脉取血术"
+      ],
+      "possible_entities": [
+        "原发性醛固酮增多症",
+        "肾上腺静脉取血术",
+        "磁共振血管成像"
+      ],
+      "figure_total_detected": 11,
+      "figure_success_downloaded": 11
+    },
+    {
+      "id": "图 6-3",
+      "title": "图 6 肾上腺静脉 MRA 重建 A. 左侧肾上腺静脉；B. 右侧肾上腺静脉；C. 双侧肾上腺静脉 (3) C",
+      "main_figure_no": 6,
+      "sub_figure_no": 3,
+      "sub_figure_title": "C",
+      "location": "第272行",
+      "line_no": 272,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/原发性醛固酮增多症肾上腺静脉取血术专家共识/assets/figures/figure_6_肾上腺静脉_MRA_重建_A_左侧肾上腺静脉_B_右侧肾上腺静脉_C_双侧肾上腺静脉_3_C.png",
+      "main_figure_detected_count": 3,
+      "medical_meaning": "该图片展示了通过磁共振血管成像（MRA）重建技术显示的双侧肾上腺静脉解剖结构，用于指导原发性醛固酮增多症患者进行肾上腺静脉取血术（AVS）前的血管定位，以提高手术成功率和准确性。",
+      "keywords": [
+        "肾上腺静脉",
+        "MRA重建",
+        "左侧肾上腺静脉",
+        "右侧肾上腺静脉",
+        "双侧肾上腺静脉",
+        "原发性醛固酮增多症",
+        "肾上腺静脉取血术"
+      ],
+      "possible_entities": [
+        "原发性醛固酮增多症",
+        "肾上腺静脉取血术",
+        "磁共振血管成像"
+      ],
+      "figure_total_detected": 11,
+      "figure_success_downloaded": 11
+    }
+  ]
+}

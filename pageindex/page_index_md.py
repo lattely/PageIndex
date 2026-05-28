@@ -7,18 +7,30 @@ try:
 except:
     from utils import *
 
-async def get_node_summary(node, summary_token_threshold=200, model=None):
+async def get_node_summary(node, summary_token_threshold=200, model=None, summary_language: str = "auto"):
     node_text = node.get('text')
     num_tokens = count_tokens(node_text, model=model)
     if num_tokens < summary_token_threshold:
         return node_text
     else:
-        return await generate_node_summary(node, model=model)
+        return await generate_node_summary(
+            node, model=model, summary_language=summary_language
+        )
 
 
-async def generate_summaries_for_structure_md(structure, summary_token_threshold, model=None):
+async def generate_summaries_for_structure_md(
+    structure, summary_token_threshold, model=None, summary_language: str = "auto"
+):
     nodes = structure_to_list(structure)
-    tasks = [get_node_summary(node, summary_token_threshold=summary_token_threshold, model=model) for node in nodes]
+    tasks = [
+        get_node_summary(
+            node,
+            summary_token_threshold=summary_token_threshold,
+            model=model,
+            summary_language=summary_language,
+        )
+        for node in nodes
+    ]
     summaries = await asyncio.gather(*tasks)
     
     for node, summary in zip(nodes, summaries):
@@ -240,7 +252,7 @@ def clean_tree_for_output(tree_nodes):
     return cleaned_nodes
 
 
-async def md_to_tree(md_path, if_thinning=False, min_token_threshold=None, if_add_node_summary='no', summary_token_threshold=None, model=None, if_add_doc_description='no', if_add_node_text='no', if_add_node_id='yes'):
+async def md_to_tree(md_path, if_thinning=False, min_token_threshold=None, if_add_node_summary='no', summary_token_threshold=None, model=None, if_add_doc_description='no', if_add_node_text='no', if_add_node_id='yes', summary_language='auto', if_add_medical_metadata='no'):
     with open(md_path, 'r', encoding='utf-8') as f:
         markdown_content = f.read()
     line_count = markdown_content.count('\n') + 1
@@ -269,7 +281,12 @@ async def md_to_tree(md_path, if_thinning=False, min_token_threshold=None, if_ad
         tree_structure = format_structure(tree_structure, order = ['title', 'node_id', 'line_num', 'summary', 'prefix_summary', 'text', 'nodes'])
         
         print(f"Generating summaries for each node...")
-        tree_structure = await generate_summaries_for_structure_md(tree_structure, summary_token_threshold=summary_token_threshold, model=model)
+        tree_structure = await generate_summaries_for_structure_md(
+            tree_structure,
+            summary_token_threshold=summary_token_threshold,
+            model=model,
+            summary_language=summary_language,
+        )
         
         if if_add_node_text == 'no':
             # Remove text after summary generation if not requested
@@ -279,10 +296,18 @@ async def md_to_tree(md_path, if_thinning=False, min_token_threshold=None, if_ad
             print(f"Generating document description...")
             # Create a clean structure without unnecessary fields for description generation
             clean_structure = create_clean_structure_for_description(tree_structure)
-            doc_description = generate_doc_description(clean_structure, model=model)
-            return {
+            doc_description = generate_doc_description(
+                clean_structure, model=model, summary_language=summary_language
+            )
+            result = {
                 'doc_name': os.path.splitext(os.path.basename(md_path))[0],
                 'doc_description': doc_description,
+                'line_count': line_count,
+                'structure': tree_structure,
+            }
+        else:
+            result = {
+                'doc_name': os.path.splitext(os.path.basename(md_path))[0],
                 'line_count': line_count,
                 'structure': tree_structure,
             }
@@ -292,12 +317,35 @@ async def md_to_tree(md_path, if_thinning=False, min_token_threshold=None, if_ad
             tree_structure = format_structure(tree_structure, order = ['title', 'node_id', 'line_num', 'summary', 'prefix_summary', 'text', 'nodes'])
         else:
             tree_structure = format_structure(tree_structure, order = ['title', 'node_id', 'line_num', 'summary', 'prefix_summary', 'nodes'])
-    
-    return {
-        'doc_name': os.path.splitext(os.path.basename(md_path))[0],
-        'line_count': line_count,
-        'structure': tree_structure,
-    }
+        result = {
+            'doc_name': os.path.splitext(os.path.basename(md_path))[0],
+            'line_count': line_count,
+            'structure': tree_structure,
+        }
+
+    if if_add_medical_metadata == 'yes':
+        from .medical_metadata import enrich_with_medical_metadata
+        if if_add_node_text == 'no':
+            node_list, markdown_lines = extract_nodes_from_markdown(markdown_content)
+            nodes_with_content = extract_node_text_content(node_list, markdown_lines)
+            text_by_title = {n['title']: n['text'] for n in nodes_with_content}
+            for node in structure_to_list(result['structure']):
+                if node.get('title') in text_by_title:
+                    node['text'] = text_by_title[node['title']]
+        project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        result = await enrich_with_medical_metadata(
+            result,
+            full_text=markdown_content,
+            source_path=md_path,
+            project_root=project_root,
+            model=model,
+            summary_language=summary_language,
+        )
+        if if_add_node_text == 'no':
+            for node in structure_to_list(result['structure']):
+                node.pop('text', None)
+
+    return result
 
 
 if __name__ == "__main__":

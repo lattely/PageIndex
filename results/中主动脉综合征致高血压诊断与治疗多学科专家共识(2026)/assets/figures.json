@@ -1,0 +1,122 @@
+{
+  "figures_info": [
+    {
+      "id": "图 1-1",
+      "title": "图 1 中主动脉综合征解剖学分型 (1) 肾动脉上",
+      "main_figure_no": 1,
+      "sub_figure_no": 1,
+      "sub_figure_title": "肾动脉上",
+      "location": "第49行",
+      "line_no": 49,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/中主动脉综合征致高血压诊断与治疗多学科专家共识(2026)/assets/figures/figure_1_中主动脉综合征解剖学分型_1_肾动脉上.png",
+      "main_figure_detected_count": 3,
+      "medical_meaning": "该图片展示了中主动脉综合征的解剖学分型中的第一种类型，即肾动脉上型狭窄，狭窄位于腹腔干和肠系膜上动脉开口上方，占25%～30%，临床表现为顽固性高血压，易发生心力衰竭，若累及腹腔干和肠系膜上动脉且侧支循环未建立，可出现消化道症状。",
+      "keywords": [
+        "中主动脉综合征",
+        "解剖学分型",
+        "肾动脉上",
+        "主动脉狭窄",
+        "顽固性高血压"
+      ],
+      "possible_entities": [
+        "中主动脉综合征",
+        "肾动脉上型",
+        "腹腔干",
+        "肠系膜上动脉",
+        "高血压",
+        "心力衰竭",
+        "消化道症状"
+      ],
+      "figure_total_detected": 4,
+      "figure_success_downloaded": 4
+    },
+    {
+      "id": "图 1-2",
+      "title": "图 1 中主动脉综合征解剖学分型 (2) 肾动脉水平",
+      "main_figure_no": 1,
+      "sub_figure_no": 2,
+      "sub_figure_title": "肾动脉水平",
+      "location": "第52行",
+      "line_no": 52,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/中主动脉综合征致高血压诊断与治疗多学科专家共识(2026)/assets/figures/figure_1_中主动脉综合征解剖学分型_2_肾动脉水平.png",
+      "main_figure_detected_count": 3,
+      "medical_meaning": "该图片展示了中主动脉综合征（MAS）在肾动脉水平的解剖学分型，即狭窄位于肾动脉水平（腹腔干和肠系膜上动脉开口下方），占50%-60%，常合并肾动脉狭窄，导致顽固性高血压，双侧严重狭窄易引起肾功能损害。",
+      "keywords": [
+        "中主动脉综合征",
+        "解剖学分型",
+        "肾动脉水平",
+        "肾动脉狭窄",
+        "顽固性高血压",
+        "肾功能损害"
+      ],
+      "possible_entities": [
+        "中主动脉综合征",
+        "肾动脉狭窄",
+        "顽固性高血压",
+        "肾功能损害"
+      ],
+      "figure_total_detected": 4,
+      "figure_success_downloaded": 4
+    },
+    {
+      "id": "图 1-3",
+      "title": "图 1 中主动脉综合征解剖学分型 (3) 肾动脉下",
+      "main_figure_no": 1,
+      "sub_figure_no": 3,
+      "sub_figure_title": "肾动脉下",
+      "location": "第55行",
+      "line_no": 55,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/中主动脉综合征致高血压诊断与治疗多学科专家共识(2026)/assets/figures/figure_1_中主动脉综合征解剖学分型_3_肾动脉下.png",
+      "main_figure_detected_count": 3,
+      "medical_meaning": "该图片展示了中主动脉综合征的第三种解剖学分型，即肾动脉下型，指主动脉狭窄或病变位于肾动脉开口以下，主要影响肾动脉远端的腹主动脉，可能导致下肢缺血或肾后性高血压。",
+      "keywords": [
+        "中主动脉综合征",
+        "解剖学分型",
+        "肾动脉下",
+        "主动脉狭窄",
+        "高血压"
+      ],
+      "possible_entities": [
+        "中主动脉综合征",
+        "肾动脉下型",
+        "腹主动脉狭窄",
+        "肾后性高血压"
+      ],
+      "figure_total_detected": 4,
+      "figure_success_downloaded": 4
+    },
+    {
+      "id": "图 2",
+      "title": "图 2 中主动脉综合征（MAS）的诊断思路",
+      "main_figure_no": 2,
+      "sub_figure_no": null,
+      "sub_figure_title": "",
+      "location": "第149行",
+      "line_no": 149,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/中主动脉综合征致高血压诊断与治疗多学科专家共识(2026)/assets/figures/figure_2_中主动脉综合征_MAS_的诊断思路.png",
+      "main_figure_detected_count": 1,
+      "medical_meaning": "该图片展示了中主动脉综合征（MAS）的诊断思路流程图，用于指导临床医生根据临床表现、影像学检查和病因鉴别进行系统性诊断。",
+      "keywords": [
+        "中主动脉综合征",
+        "诊断思路",
+        "流程图",
+        "MAS"
+      ],
+      "possible_entities": [
+        "中主动脉综合征",
+        "MAS",
+        "诊断流程"
+      ],
+      "figure_total_detected": 4,
+      "figure_success_downloaded": 4
+    }
+  ]
+}

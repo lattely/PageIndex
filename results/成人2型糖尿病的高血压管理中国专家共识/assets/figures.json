@@ -1,0 +1,73 @@
+{
+  "figures_info": [
+    {
+      "id": "图 1-1",
+      "title": "图 1 成人2型糖尿病的高血压管理中国专家共识推荐总结",
+      "main_figure_no": 1,
+      "sub_figure_no": 1,
+      "sub_figure_title": "",
+      "location": "第5行",
+      "line_no": 5,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/成人2型糖尿病的高血压管理中国专家共识/assets/figures/figure_1_成人2型糖尿病的高血压管理中国专家共识推荐总结_1.png",
+      "main_figure_detected_count": 2,
+      "medical_meaning": "该图片总结了成人2型糖尿病患者高血压管理的中国专家共识推荐意见，为临床医生提供系统化的血压筛查、监测、控制目标和治疗建议，以降低心血管和肾脏疾病风险。",
+      "keywords": [
+        "2型糖尿病",
+        "高血压管理",
+        "中国专家共识",
+        "血压控制目标",
+        "降压治疗"
+      ],
+      "possible_entities": [
+        "2型糖尿病",
+        "高血压",
+        "心血管疾病",
+        "肾脏疾病",
+        "血压监测",
+        "生活方式管理"
+      ],
+      "figure_total_detected": 2,
+      "figure_success_downloaded": 2
+    },
+    {
+      "id": "图 1-2",
+      "title": "图 1 成人2型糖尿病的高血压管理中国专家共识推荐总结",
+      "main_figure_no": 1,
+      "sub_figure_no": 2,
+      "sub_figure_title": "",
+      "location": "第48行",
+      "line_no": 48,
+      "asset_status": "success",
+      "asset_message": "downloaded_from_markdown",
+      "image_path": "results/成人2型糖尿病的高血压管理中国专家共识/assets/figures/figure_1_成人2型糖尿病的高血压管理中国专家共识推荐总结_2.png",
+      "main_figure_detected_count": 2,
+      "medical_meaning": "该图片为《成人2型糖尿病的高血压管理中国专家共识》的推荐总结流程图，系统展示了T2DM合并高血压患者的筛查、监测、目标设定、生活方式干预及药物治疗的推荐路径和要点，用于指导临床实践。",
+      "keywords": [
+        "2型糖尿病",
+        "高血压管理",
+        "专家共识",
+        "推荐总结",
+        "血压监测",
+        "血压控制目标",
+        "生活方式干预",
+        "降压药物"
+      ],
+      "possible_entities": [
+        "T2DM",
+        "高血压",
+        "ACEI",
+        "ARB",
+        "CCB",
+        "SGLT2i",
+        "GLP-1RA",
+        "动态血压监测",
+        "家庭血压监测",
+        "诊室血压测量"
+      ],
+      "figure_total_detected": 2,
+      "figure_success_downloaded": 2
+    }
+  ]
+}

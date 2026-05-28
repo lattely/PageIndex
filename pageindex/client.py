@@ -41,11 +41,9 @@ class PageIndexClient:
         overrides = {}
         if model:
             overrides["model"] = model
-        if retrieve_model:
-            overrides["retrieve_model"] = retrieve_model
         opt = ConfigLoader().load(overrides or None)
         self.model = opt.model
-        self.retrieve_model = _normalize_retrieve_model(opt.retrieve_model or self.model)
+        self.retrieve_model = _normalize_retrieve_model(retrieve_model or self.model)
         if self.workspace:
             self.workspace.mkdir(parents=True, exist_ok=True)
         self.documents = {}

@@ -1,0 +1,50 @@
+{
+  "doc_name": "示例文档.pdf",
+  "abstract": "摘要全文",
+  "keywords": ["关键词1", "关键词2"],
+  "year": "2026",
+  "month": "6",
+  "author": "作者姓名，多个用逗号分隔",
+  "article_type": "专家共识",
+  "disease": ["高血压", "中主动脉综合征"],
+  "raw_pdf_path": "documents/pdf/示例文档.pdf",
+  "figures_info": [
+    {
+      "id": "图1",
+      "title": "图标题（可推断时填写）",
+      "description": "图的主要内容描述（基于正文引用与上下文，非图像识别）",
+      "page": 3,
+      "location": "第3页",
+      "image_path": "results/示例文档/assets/figures/figure_1.png",
+      "asset_accuracy": 0.92,
+      "asset_accuracy_passed": true
+    }
+  ],
+  "tables_info": [
+    {
+      "id": "表1",
+      "title": "表标题（可推断时填写）",
+      "description": "表的主要内容描述（基于正文引用与上下文，非表格解析）",
+      "page": 4,
+      "location": "第4页",
+      "image_path": "results/示例文档/assets/tables/table_1.png",
+      "csv_path": "results/示例文档/assets/tables/table_1.csv",
+      "md_path": "results/示例文档/assets/tables/table_1.md",
+      "asset_accuracy": 0.88,
+      "asset_accuracy_passed": true
+    }
+  ],
+  "structure": [
+    {
+      "title": "章节标题",
+      "node_id": "0000",
+      "start_index": 1,
+      "end_index": 2,
+      "summary": "该节内容摘要",
+      "special_number": {
+        "示例指标名称": "120～140 mmHg"
+      },
+      "nodes": []
+    }
+  ]
+}

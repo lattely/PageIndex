@@ -1,0 +1,137 @@
+{
+  "tables_info": [
+    {
+      "id": "表1",
+      "title": "有氧耐力等级评估表",
+      "location": "第168行",
+      "line_no": 168,
+      "asset_status": "success",
+      "asset_message": "table_parsed_from_markdown",
+      "image_path": "",
+      "csv_path": "results/高血压、糖尿病、血脂异常人群运动处方临床路径/assets/tables/table_1_有氧耐力等级评估表.csv",
+      "md_path": "results/高血压、糖尿病、血脂异常人群运动处方临床路径/assets/tables/table_1_有氧耐力等级评估表.md",
+      "medical_meaning": "该表格用于根据性别和年龄，通过最大摄氧量（VO2max）范围评估个体的有氧耐力等级（高、中、低），为高血压、糖尿病、血脂异常人群制定运动处方提供心肺耐力分层依据。",
+      "keywords": [
+        "有氧耐力等级",
+        "最大摄氧量",
+        "性别",
+        "年龄",
+        "运动处方",
+        "心肺耐力评估"
+      ],
+      "possible_entities": [
+        "最大摄氧量",
+        "有氧耐力",
+        "男性",
+        "女性",
+        "20~29岁",
+        "30~39岁",
+        "40~49岁",
+        "50~59岁",
+        "60~69岁"
+      ]
+    },
+    {
+      "id": "表2",
+      "title": "运动处方等级判定表",
+      "location": "第184行",
+      "line_no": 184,
+      "asset_status": "success",
+      "asset_message": "table_parsed_from_markdown",
+      "image_path": "",
+      "csv_path": "results/高血压、糖尿病、血脂异常人群运动处方临床路径/assets/tables/table_2_运动处方等级判定表.csv",
+      "md_path": "results/高血压、糖尿病、血脂异常人群运动处方临床路径/assets/tables/table_2_运动处方等级判定表.md",
+      "medical_meaning": "该表格用于根据患者的运动风险等级（低、中、高）和有氧耐力等级（高、中、低）综合判定运动处方级别（1-5级），以指导高血压、糖尿病、血脂异常人群的个体化运动强度设定。",
+      "keywords": [
+        "运动处方等级",
+        "运动风险",
+        "有氧耐力",
+        "预期运动强度",
+        "运动处方判定"
+      ],
+      "possible_entities": [
+        "运动风险",
+        "有氧耐力",
+        "运动处方级别",
+        "预期运动强度"
+      ]
+    },
+    {
+      "id": "表3",
+      "title": "运动处方分级表",
+      "location": "第202行",
+      "line_no": 202,
+      "asset_status": "success",
+      "asset_message": "table_parsed_from_markdown",
+      "image_path": "",
+      "csv_path": "results/高血压、糖尿病、血脂异常人群运动处方临床路径/assets/tables/table_3_运动处方分级表.csv",
+      "md_path": "results/高血压、糖尿病、血脂异常人群运动处方临床路径/assets/tables/table_3_运动处方分级表.md",
+      "medical_meaning": "该表格为针对高血压、糖尿病、血脂异常人群制定的运动处方分级标准，提供了从最低运动量到最大运动量的5级运动方案，涵盖热身、有氧、抗阻和柔韧性运动的具体参数，用于指导临床医生根据患者病情和运动能力个体化调整运动强度、时间和频率。",
+      "keywords": [
+        "运动处方",
+        "分级",
+        "有氧运动",
+        "抗阻运动",
+        "柔韧性运动",
+        "储备心率",
+        "运动强度",
+        "运动时间",
+        "运动频率",
+        "高血压",
+        "糖尿病",
+        "血脂异常"
+      ],
+      "possible_entities": [
+        "HRR",
+        "储备心率",
+        "运动处方分级表",
+        "热身运动",
+        "有氧运动",
+        "抗阻运动",
+        "柔韧性运动",
+        "高血压",
+        "糖尿病",
+        "血脂异常"
+      ]
+    },
+    {
+      "id": "表4",
+      "title": "表4",
+      "location": "第268行",
+      "line_no": 268,
+      "asset_status": "success",
+      "asset_message": "table_parsed_from_markdown",
+      "image_path": "",
+      "csv_path": "results/高血压、糖尿病、血脂异常人群运动处方临床路径/assets/tables/table_4_表4.csv",
+      "md_path": "results/高血压、糖尿病、血脂异常人群运动处方临床路径/assets/tables/table_4_表4.md",
+      "medical_meaning": "该表格是高血压、糖尿病、血脂异常人群运动处方临床路径的执行表单，用于记录患者基本信息、路径各阶段（人群筛查、处方制定、运动监督与调整、自我管理与复诊）的主要工作、重点医嘱、备注及病情变异情况，是临床实施运动处方的标准化操作记录工具。",
+      "keywords": [
+        "运动处方",
+        "临床路径",
+        "高血压",
+        "糖尿病",
+        "血脂异常",
+        "人群筛查",
+        "运动风险评估",
+        "体适能评估",
+        "医疗监督",
+        "处方调整",
+        "自我管理",
+        "复诊"
+      ],
+      "possible_entities": [
+        "高血压",
+        "糖尿病",
+        "血脂异常",
+        "运动处方",
+        "临床路径",
+        "体适能评估",
+        "运动风险评估",
+        "有氧耐力评估",
+        "眼底照相",
+        "血液检查",
+        "体格测量"
+      ]
+    }
+  ]
+}
